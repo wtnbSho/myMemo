@@ -1,6 +1,7 @@
-# ウェブバイタルに関する情報
+# PageSpeedInsightsの評価向上に関わる情報
 ## ウェブバイタルとは
 - [【重要】コアウェブバイタルとは? LCP/FID/CLSをわかりやすく解説【SEO情報まとめ】](https://webtan.impress.co.jp/e/2020/06/05/36210)  
+- googleのブログ [Web Vitals](https://web.dev/vitals/)
 
 ## PageSpeed Insightsの対策
 - よく読めてないけど、wordpressに限らず有用な情報 [コアウェブバイタルの計測と対策～PageSpeed Insightsで WordPressサイトを 「良好」にする方法～](https://tane-creative.co.jp/column/4017/)
@@ -18,3 +19,6 @@
 - mdn [aspect-ratio](https://developer.mozilla.org/ja/docs/Web/CSS/aspect-ratio)
 - (カード体裁をとるのもaspect-ratioで [最新のCLS対応はaspect-ratioがベスト！padding-topはもう古い](https://coosy.co.jp/blog/cls-aspect-ratio/))
 - aspect-ratioとLayoutShift [CSS aspect-ratioプロパティの使い方、レスポンシブやレイアウトシフトで大活躍](https://coliss.com/articles/build-websites/operation/css/how-to-use-aspect-ratio-css-property.html)
+
+## メインスレッド処理の最小化
+-[「メインスレッド処理の最小化」の意味と対処法を分かりやすく解説！](https://adam-technologies.jp/column/seo-speed/main-thread/)
