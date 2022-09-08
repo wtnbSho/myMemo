@@ -4,7 +4,7 @@
 
 - 徐々に表示されるテキストアニメーション [簡単CSSアニメーション＆デザイン20選（ソースコードと解説付き）](https://baigie.me/officialblog/2021/02/25/css-tips-1/)
 
-<br>
+---
 
 ## ブラウザレンダリング
 - CPUとGPU [CSS アニメーションについて深く知る](https://qiita.com/yuki153/items/9aac0e5c8d7230a7bbe2#transform-translatex0-%E3%81%AE%E9%81%A9%E5%BF%9C)  
@@ -14,12 +14,12 @@
 
 - [ReFlowの原因とマークアップの最適化](https://engineering.linecorp.com/ja/blog/reflow-and-markup-optimization/)
 
-<br>
+---
 
 ## transitionとanimationの優位性
 - [CSS Transition と Keyframe Animation 違いと優位性](http://better-than-i-was-yesterday.com/css-transition-and-css-animation/)
 
-<br>
+---
 
 ## slick-sliderのお約束  
 ```html
@@ -42,7 +42,6 @@
 - 【重要】スマホ対応には、コンテンツ第一階層にwidth: 100vw;を指定する
 
 ### ダメな例  
----
 ```html
 <div id="slider">
 	<figure class="slick-slide">
@@ -59,3 +58,61 @@
 </div>
 ```
 - ダメな例のようにすると、画像サイズがコントロールできず、スマホ対応できない。
+
+---
+
+## slickSetOptionの注意事項
+
+使用時はresponsive:[{}]を使用していないか注意せよ  
+
+成功例
+```js
+/*autoplay開始位置設定*/
+function triggerScroll(targetObj) {
+	let targetFlag = false;
+	$(window).on('scroll', function(){
+		let scrollTop = $(window).scrollTop();
+		let scrollBottom = scrollTop + $(window).height();
+		let targetTop = targetObj.offset().top;
+		let targetBottom = targetTop + targetObj.height();
+		if (scrollBottom > targetTop && scrollTop < targetBottom) {
+			if (!targetFlag) {
+				targetObj.slick('slickSetOption', {
+					autoplay: true,
+					responsive:[{
+						breakpoint:500,
+						settings: {
+							autoplay: true
+						}
+					}]
+				},true);
+				targetFlag = true;
+			}
+		}
+	});
+};
+```
+
+失敗例
+```js
+/*autoplay開始位置設定*/
+function triggerScroll(targetObj) {
+	let targetFlag = false;
+	$(window).on('scroll', function(){
+		let scrollTop = $(window).scrollTop();
+		let scrollBottom = scrollTop + $(window).height();
+		let targetTop = targetObj.offset().top;
+		let targetBottom = targetTop + targetObj.height();
+		if (scrollBottom > targetTop && scrollTop < targetBottom) {
+			if (!targetFlag) {
+				targetObj.slick('slickSetOption', {
+					autoplay: true,
+				},true);
+				targetFlag = true;
+			}
+		}
+	});
+};
+```
+
+ターゲット要素にresponsiveプロパティが指定されていた場合、slickSetOptionでもrespoinsiveに操作したいプロパティを指定しなければならない（今回でいえばautoplay）。ターゲット要素のresponsiveでautoplayに関する記述などないにもかかわらず、この指定をしなければautoplayが適用されなかった。
