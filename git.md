@@ -60,11 +60,29 @@ git switch 【ブランチ名】
 git switch -c 【新ブランチ名】
 ```
 
-- 
+- リモートリポジトリをcloneして、別リモートリポジトリへプッシュ  
+テンプレートリポジトリからクローンしてから独自リポジトリとして管理する方法
+1. ``git clone``を実行  
+別名で保存。例では``message``という新しい名前を付けている
 ```git
-
+$ git clone git@github.com:wtnbSho/dms-template.git message
 ```
+1. GitHubで新リポジトリ作成しURLを取得
+1. gitのremote url変更
+```git
+# remote urlの確認
+$ git config remote.origin.url
 
+# remote urlの変更
+$ git remote set-url origin git@github.com:wtnbSho/message_DMS.git
+
+# remote urlの確認
+$ git config remote.origin.url
+```
+1. git pushする
+```git
+$ git push
+```
 - 
 ```git
 
