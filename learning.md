@@ -116,3 +116,7 @@ function triggerScroll(targetObj) {
 ```
 
 ターゲット要素にresponsiveプロパティが指定されていた場合、slickSetOptionでもrespoinsiveに操作したいプロパティを指定しなければならない（今回でいえばautoplay）。ターゲット要素のresponsiveでautoplayに関する記述などないにもかかわらず、この指定をしなければautoplayが適用されなかった。
+
+## 単色にはpngを使う
+自然な写真はjpgでもいいようだが。。今回の例では単色ロゴ画像をjpgで書き出したところ、色むらが現れていた。これがpngだと発生しない（アウトラインの淵の部分はギザギザになってしまうがこれは仕方がない。）  
+``単色べた塗り = png``で覚えておいてよさそうだ。
